@@ -16,6 +16,7 @@ const failbackRules = [
 module.exports = {
   /**  files to watch */
   files: [
+    'demos/**',
     'dist/**/*.(html|js)',
     'index.html'
   ],

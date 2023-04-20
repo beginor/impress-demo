@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>impress demo 01</title>
+  <link rel="stylesheet" href="http://127.0.0.1/dist/libs/@tabler/core/css/tabler.min.css">
+  <link rel="stylesheet" href="http://127.0.0.1/dist/libs/@tabler/core/css/tabler-vendors.min.css">
+  <style>
+  @import url(http://127.0.0.1/dist/inter/inter.css);
+  :root {
+    --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+  }
+  </style>
+  <link rel="stylesheet" href="../assets/impress.js/css/impress-common.css">
+  <!-- <link rel="stylesheet" href="../assets/impress.js/css/impress-demo.css"> -->
+</head>
+<body>
+  <div id="impress" style=""
+    data-transition-duration="1000"
+    data-width="1024"
+    data-height="768"
+    data-max-scale="3"
+    data-min-scale="0"
+    data-perspective="1000"
+    data-autoplay="4"
+    >
+    <div id="overview" class="step" data-x="0" data-y="0" data-z="0" data-scale="10">
+    </div>
+    <div id="my-first-slide" class="step" data-x="-500" data-y="-500" data-rotate-x="45" style="background-color: yellow; width: 1920px; height: 1096px;">
+      <h1>My first slide</h1>
+    </div>
+    <div id="hello-world" class="step" data-x="500" data-y="500" data-rotate-x="-45">
+      <h1>Hello, world!</h1>
+    </div>
+    <div id="map" class="step">
+    </div>
+  </div>
+  <div id="impress-toolbar"></div>
+  <div class="hint">
+    <p>Use a spacebar or arrow keys to navigate. <br/>
+       Press 'P' to launch speaker console.
+    </p>
+  </div>
+  <script>
+  if ("ontouchstart" in document.documentElement) {
+      document.querySelector(".hint").innerHTML = "<p>Swipe left or right to navigate</p>";
+  }
+  </script>
+  <script src="../assets/impress.js/js/impress.js"></script>
+  <script>
+  impress('impress').init();
+  </script>
+</body>
+</html>
