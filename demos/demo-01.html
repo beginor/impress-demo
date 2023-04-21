@@ -7,6 +7,7 @@
   <title>impress demo 01</title>
   <link rel="stylesheet" href="http://127.0.0.1/dist/libs/@tabler/core/css/tabler.min.css">
   <link rel="stylesheet" href="http://127.0.0.1/dist/libs/@tabler/core/css/tabler-vendors.min.css">
+  <link rel="stylesheet" href="http://127.0.0.1/dist/libs/mapbox-gl/mapbox-gl.css">
   <style>
   @import url(http://127.0.0.1/dist/inter/inter.css);
   :root {
@@ -14,35 +15,36 @@
   }
   </style>
   <link rel="stylesheet" href="../assets/impress.js/css/impress-common.css">
+  <link rel="stylesheet" href="./demos.css">
   <!-- <link rel="stylesheet" href="../assets/impress.js/css/impress-demo.css"> -->
 </head>
-<body>
+<body class="bg-dark">
   <div id="impress" style=""
     data-transition-duration="1000"
-    data-width="1024"
-    data-height="768"
+    data-width="1920"
+    data-height="1096"
     data-max-scale="3"
     data-min-scale="0"
     data-perspective="1000"
-    data-autoplay="4"
+    data-autoplay="1000"
     >
     <div id="overview" class="step" data-x="0" data-y="0" data-z="0" data-scale="10">
     </div>
-    <div id="my-first-slide" class="step" data-x="-500" data-y="-500" data-rotate-x="45" style="background-color: yellow; width: 1920px; height: 1096px;">
-      <h1>My first slide</h1>
+    <div id="my-first-slide" class="step bg-info" data-x="-1920" data-y="-500" data-rotate-y="-15" data-rotate-x="0">
+      <h1 class="text-white">My first slide</h1>
     </div>
-    <div id="hello-world" class="step" data-x="500" data-y="500" data-rotate-x="-45">
+    <div id="hello-world" class="step bg-warning" data-x="0" data-y="-500" data-rotate-y="0">
       <h1>Hello, world!</h1>
     </div>
-    <div id="map" class="step">
+    <div id="map" class="step bg-success" data-x="1920" data-y="-500" data-rotate-y="15">
+    </div>
+    <div id="video" class="step" data-x="3840" data-y="-500" data-rotate-y="0">
+      <video controls width="1920" autoplay="autoplay" loop="loop" muted="muted">
+        <source src="http://127.0.0.1/dist/flower.webm" type="video/webm">
+      </video>
     </div>
   </div>
   <div id="impress-toolbar"></div>
-  <div class="hint">
-    <p>Use a spacebar or arrow keys to navigate. <br/>
-       Press 'P' to launch speaker console.
-    </p>
-  </div>
   <script>
   if ("ontouchstart" in document.documentElement) {
       document.querySelector(".hint").innerHTML = "<p>Swipe left or right to navigate</p>";
@@ -51,6 +53,20 @@
   <script src="../assets/impress.js/js/impress.js"></script>
   <script>
   impress('impress').init();
+  </script>
+  <script src="http://127.0.0.1/dist/libs/mapbox-gl/mapbox-gl-umd.min.js"></script>
+  <script>
+    const map = new mapboxgl.Map({
+      "container": "map",
+      "accessToken": "pk.eyJ1IjoiYmVnaW5vciIsImEiOiJja2pmMWNkbXg4azcyMzVwZHFraGc1cjYzIn0.xo0073v7zQfAicAPsr0CHQ",
+      "style": "mapbox://styles/beginor/ckjf6mvge0hhk19p75nt647p5",
+      "center": { "lng": 113.08710083844062, "lat": 23.65525480283638 },
+      "zoom": 6.4,
+      "pitch": 0,
+      "bearing": 0,
+      "attributionControl": false,
+      "projection": { "name": "mercator" }
+    });
   </script>
 </body>
 </html>

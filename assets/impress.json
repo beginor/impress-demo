@@ -9,7 +9,19 @@
   "data-autoplay": "4",
   "steps": [
     {
-      "duration": 1000
+      "duration": 1000,
+      "content": "video",
+      "src": ""
+    },
+    {
+      "content": "iframe",
+      "src": ""
+    },
+    {
+      "content": "text",
+      "header": "",
+      "body": "",
+      "footer": ""
     }
   ]
 }
