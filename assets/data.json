@@ -1,0 +1,206 @@
+{
+    "uodatetime": "2023-04-21 12:00:00",
+    "layout": "layout4",
+    "slides":
+    [
+        {
+            "type": "video",
+            "autoplay": 15,
+            "content":
+            {
+
+                "title":
+                {
+                    "text":"视频名称",
+                    "text_align":"center",
+                    "font_family":"华文中宋",
+                    "font_size":"5rem",
+                    "color":"rgba(120,55,0,1)",
+                    "top":"0",
+                    "left":"0",
+                    "width":"100%",
+                    "background":"rgba(255,255,255,0.1)"
+                },
+                "source": "images/航拍大山云海4K视频.mp4",
+                "autoplay": true,
+                "controls": true,
+                "muted": true,
+                "loop": true
+            }
+        },
+  
+        {
+            "type": "url",
+            "autoplay": 15,
+            "content":
+            {
+                "url": "https://it.gdeei.cn/itm"
+            }
+        },
+        {
+            "type": "picture",
+            "autoplay": 15,
+            "content":
+            {
+                "title":
+                {
+                    "text":"图片名称",
+                    "text_align":"center",
+                    "font_family":"微软雅黑",
+                    "font_size":"5rem",
+                    "color":"rgba(255,255,128,1)",
+                    "top":"0rem",
+                    "left":"0rem",
+                    "width":"100%",
+                    "background":"rgba(128,128,128,0)"
+                },
+                "source": "images/圆月.jpg"
+            }
+        },
+        {
+            "type": "video",
+            "autoplay": 15,
+            "content":
+            {
+
+                "title":
+                {
+                    "text":"视频名称",
+                    "text_align":"center",
+                    "font_family":"微软雅黑",
+                    "font_size":"5rem",
+                    "top":"0rem",
+                    "left":"0rem",
+                    "width":"100%",
+                    "background":"rgba(128,0,0,0.5)"
+                },
+                "source": "images/透明循环红绸边框视频素材.mp4",
+                "autoplay": true,
+                "controls": true,
+                "muted": true,
+                "loop": true
+            }
+        },
+        {
+            "type": "video",
+            "autoplay": 15,
+            "content":
+            {
+
+                "title":
+                {
+                    "text":"视频名称",
+                    "text_align":"center",
+                    "font_family":"微软雅黑",
+                    "font_size":"5rem",
+                    "color":"rgba(255,255,128,1)",
+                    "top":"0rem",
+                    "left":"0rem",
+                    "width":"100%",
+                    "background":"rgba(9,0,128,0.5)"
+                },
+                "source": "images/机械齿轮炫酷穿越4k背景视频.mp4",
+                "autoplay": true,
+                "controls": true,
+                "muted": true,
+                "loop": true
+            }
+        },
+        {
+            "type": "pictureset",
+            "autoplay": 15,
+            "content":
+            {
+                "set-id": "set1",
+                "layout":"layout_album"
+            }
+        },
+        {
+            "type":"text",
+            "autoplay": 15,
+            "content":
+            {
+                "title":
+                {
+                    "text":"信息系统排查",
+                    "text_align":"center",
+                    "font_size":"5rem",
+                    "top":"0rem",
+                    "left":"0rem",
+                    "width":"100%",
+                    "background":"rgba(128,128,128,0)"
+                },
+                "background":"images/蓝色科技框粒子背景视频.mp4",
+                "substance":
+                {
+                    "text":"厅机关各处室、派出机构，各直属单位：\r\n\t为切实减少我厅网络安全漏洞，及时有效发现和处置网络安全隐患问题，防范网络安全风险，根据工作安排，定于4月份至7月份持续开展网络安全排查工作。现将有关事项通知如下：\n　　一、开展信息系统排查。由数字专班牵头对厅机关、各直属单位对本单位的信息系统进行排查，关闭非必要端口或主机，对长期不用、无人访问、使用率低，不影响业务的系统进行关停下线，降低网络安全风险。对有互联网控制台的电子显示屏，要加强监管和防护",
+                    "font_size":"4rem",
+                    "top":"20rem",
+                    "left":"30rem",
+                    "bottom":"20rem",
+                    "width":"130rem",
+                    "background":"rgba(128,128,128,0)"
+                },
+                "department":
+                {
+                    "text":"办公室",
+                    "text-align":"right",
+                    "font_size":"5rem",
+                    "right":"18rem",
+                    "bottom":"5rem",
+                    "width":"80rem",
+                    "background":"rgba(128,128,128,0)"
+                }
+            }
+        },
+        {
+            "type":"text",
+            "autoplay": 15,
+            "content":
+            {
+                "title":
+                {
+                    "text":"不忘初心 牢记使命",
+                    "font_family":"华文中宋",
+                    "color":"#E8A703",
+                    "font_size":"15rem",
+                    "top":"50%",
+                    "width":"100%",
+                    "text_align":"center",
+                    "background":"rgba(128,128,128,0)"
+                },
+                "background":"images/透明循环红绸边框视频素材.mp4",
+                "department":
+                {
+                    "text":"办公室",
+                    "font_family":"楷体",
+                    "font_size":"2.5rem",
+                    "right":"5rem",
+                    "bottom":"5rem",
+                    "width":"40rem",
+                    "background":"rgba(128,128,128,0)"
+                }
+            }
+        },
+        {
+            "type": "picture",
+            "autoplay": 15,
+            "content":
+            {
+                "title":
+                {
+                    "text":"图片名称",
+                    "font_family":"微软雅黑",
+                    "font_size":"3.5rem",
+                    "color":"rgba(255,255,128,1)",
+                    "top":"0rem",
+                    "left":"0rem",
+                    "width":"100%",
+                    "background":"rgba(128,128,128,0)"
+                },
+                "source": "images/落日.gif"
+            }
+        }
+
+    ]
+}

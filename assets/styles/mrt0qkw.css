@@ -1,0 +1,59 @@
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * elza:
+ *   - http://typekit.com/eulas/00000000000000007735f907
+ *   - http://typekit.com/eulas/00000000000000007735f90f
+ *   - http://typekit.com/eulas/00000000000000007735f910
+ * elza-text:
+ *   - http://typekit.com/eulas/00000000000000007735f93a
+ *   - http://typekit.com/eulas/00000000000000007735f93e
+ *   - http://typekit.com/eulas/00000000000000007735f938
+ *
+ * © 2009-2023 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2022-06-19 10:51:25 UTC"}*/
+
+@import url("https://p.typekit.net/p.css?s=1&k=mrt0qkw&ht=tk&f=49080.49084.49089.49126.49128.49133&a=1494256&app=typekit&e=css");
+
+@font-face {
+font-family:"elza";
+src:url("https://use.typekit.net/af/37dffa/00000000000000007735f907/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/37dffa/00000000000000007735f907/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/37dffa/00000000000000007735f907/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+font-family:"elza";
+src:url("https://use.typekit.net/af/6636e5/00000000000000007735f90f/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/6636e5/00000000000000007735f90f/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/6636e5/00000000000000007735f90f/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"elza";
+src:url("https://use.typekit.net/af/dc955e/00000000000000007735f910/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/dc955e/00000000000000007735f910/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/dc955e/00000000000000007735f910/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"elza-text";
+src:url("https://use.typekit.net/af/d053a5/00000000000000007735f93a/30/l?subset_id=2&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/d053a5/00000000000000007735f93a/30/d?subset_id=2&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/d053a5/00000000000000007735f93a/30/a?subset_id=2&fvd=n7&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+font-family:"elza-text";
+src:url("https://use.typekit.net/af/fe1dfd/00000000000000007735f93e/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/fe1dfd/00000000000000007735f93e/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/fe1dfd/00000000000000007735f93e/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"elza-text";
+src:url("https://use.typekit.net/af/9b4894/00000000000000007735f938/30/l?subset_id=2&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/9b4894/00000000000000007735f938/30/d?subset_id=2&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/9b4894/00000000000000007735f938/30/a?subset_id=2&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+.tk-elza { font-family: "elza",sans-serif; }
+.tk-elza-text { font-family: "elza-text",sans-serif; }

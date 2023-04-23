@@ -1,27 +1,40 @@
 {
   "id": "impress",
-  "transition-duration": 1000,
-  "data-width": "0",
-  "data-height": "0",
-  "data-max-scale": "3",
-  "data-min-scale": "0",
-  "data-perspective": "1000",
-  "data-autoplay": "4",
+  "transitionDuration": 1000,
+  "width": 0,
+  "height": 0,
+  "maxScale": 3,
+  "minScale": 0,
+  "perspective": 1000,
+  "autoplay": 0,
   "steps": [
     {
-      "duration": 1000,
-      "content": "video",
-      "src": ""
+      "id": "overview",
+      "type": "overview",
+      "className": "step",
+      "x": 0,
+      "y": 0
     },
     {
-      "content": "iframe",
-      "src": ""
+      "type": "video",
+      "id": "step-01",
+      "className": "step",
+      "x": 0,
+      "y": 0
     },
     {
-      "content": "text",
-      "header": "",
-      "body": "",
-      "footer": ""
+      "type": "map",
+      "id": "step02",
+      "className": "step",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "type": "iframe",
+      "id": "step03",
+      "className": "step",
+      "x": 0,
+      "y": 0
     }
   ]
 }

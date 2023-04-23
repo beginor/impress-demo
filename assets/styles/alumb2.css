@@ -1,0 +1,84 @@
+*,
+:after,
+:before {
+    box-sizing: border-box
+}
+
+:root {
+    --color-text: #000;
+    --color-bg: #0f0f0f;
+    --color-link: #000;
+    --color-link-hover: #000;
+    font-size: 20px
+}
+
+body {
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: elza, sans-serif;
+    overflow-x: hidden
+}
+
+ 
+.content {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 2rem;
+    display: flex
+}
+
+.content__title {
+    margin: 2.5rem 0 0;
+    font-weight: 400
+}
+
+.content__more {
+    cursor: pointer;
+    align-self: flex-end;
+    margin-bottom: 2rem;
+    font-weight: 700
+}
+
+.grid {
+    width: 92%;
+    grid-gap: 2rem;
+    pointer-events: none;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 2rem auto;
+    display: grid
+}
+
+.grid__item {
+    will-change: transform;
+    pointer-events: auto;
+    margin: 0;
+    position: relative
+}
+
+.grid__item-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    cursor: pointer;
+    background-size: cover;
+    background-color: #CCC
+}
+
+@media screen and (min-width:53em) {
+
+    .grid {
+        width: 92%;
+        grid-template-columns: repeat(13, 1fr)
+    }
+
+    .grid--medium {
+        grid-template-columns: repeat(6, 1fr)
+    }
+
+    .grid--narrow {
+        width: 70%;
+        grid-template-columns: repeat(5, 2fr)
+    }
+}

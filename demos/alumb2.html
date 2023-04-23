@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Make Way Grid Effect | Codrops</title>
+    <meta name="author" content="Codrops">
+    <link rel="icon shortcut" href="favicon.a64e97b2.ico">
+    <link rel="stylesheet" type="text/css" href="css/alumb2.css">
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+
+</head>
+
+<body class="loading">
+    <main>
+        <div class="content">
+            <h2 class="content__title">Writings</h2>
+            <div class="grid grid--narrow" data-duration="1" data-ease="elastic.out(0.5)" data-scale="3.5"  data-max-rotation="50" data-spread="50" data-max-distance="1200">
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A01.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A02.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A03.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A04.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A05.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A06.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A07.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A08.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A09.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A10.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A11.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A12.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A13.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A14.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A15.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A16.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A17.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A18.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A19.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A20.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A21.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A22.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A23.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A24.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A25.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A26.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A27.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A28.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A29.png)"></div></div>
+                <div class="grid__item"><div class="grid__item-img" style="background-image:url(images/img/A30.png)"></div></div>
+                
+ 
+            </div> 
+
+ 
+        </div>
+ 
+    </main>
+    <script type="module" src="js/alumb2.js"></script>
+    <script>
+        var pictureList = $(".grid__item-img");
+        var rndIndex=0;
+        var len = pictureList.length;
+
+        var t2 = window.setInterval(function() {
+            if(len>1)
+            {
+                var rndIndex = (Math.round(Math.random()*len));
+            }
+            pictureList[rndIndex].click();
+            
+        },3000);
+
+
+
+        
+    </script>
+</body>
+
+</html>

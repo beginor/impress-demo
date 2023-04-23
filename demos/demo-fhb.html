@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1920" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>大屏信息展示</title>
+
+    <meta name="description"
+        content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
+    <meta name="author" content="Bartek Szopka" />
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    <link href="css/impress-common.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+
+    <style>
+        html {
+            font-size: 10px;
+        }
+
+        .step {
+            height: 1080px;
+            width: 1920px;
+            padding: 0;
+        }
+
+        h2 {
+            background: -webkit-linear-gradient(white, rgb(167, 108, 0));
+            -webkit-background-clip: text;
+            -webkit-text-stroke: 4px transparent;
+        }
+
+        body {
+            background: radial-gradient(rgb(60, 60, 60), rgb(0, 0, 0));
+        }
+        #impress-toolbar
+        {
+
+            color:#888888;
+        }
+    </style>
+    <script>
+        var tid,
+            doc = document,
+            docEl = doc.documentElement;
+        var refreshRem = function () {
+            var clientWidth = docEl.clientWidth;
+            if (clientWidth >= 1920) {
+                docEl.style.fontSize = '10px'; //1rem  = 10px
+            } else {
+                docEl.style.fontSize = 10 * (clientWidth / 1920) + 'px';
+            }
+        };
+        addEventListener('resize', function () {
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300);
+        }, false);
+        addEventListener('pageshow', function (e) {
+            if (e.persisted) {
+                clearTimeout(tid);
+                tid = setTimeout(refreshRem, 300);
+            }
+        }, false);
+        refreshRem();
+    </script>
+</head>
+
+
+
+
+
+<body class="impress-not-supported">
+
+
+    <div class="fallback-message">
+        <p>尊驾的浏览器太老土啦！<b>无法满足impress.js的要求</b>，现在你只能看到一些最朴素的演示画面。</p>
+        <p>为了欣赏漂亮的演示画面，请使用先进、优雅、快速、美丽、免费的现代浏览器，比如 <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> 。</p>
+    </div>
+    <div id="impress"></div>
+    <div id='impress-toolbar'></div>
+    <script src="js/impress.js"></script>
+
+
+
+
+    <script>
+        //load layout
+        var api;
+
+        var layout;
+        let defaultTitleColor = "#FFFFFF";
+        let defaultTitleFontFamily = "华文中宋";
+        let defaultTitleFontSize = "6rem";
+        let defaultSubstanceColor = "#FFFFFF";
+        let defaultSubstanceFontFamily = "微软雅黑";
+        let defaultSubstanceFontSize = "5rem";
+        let defaultDepartmentColor = "#FFFFFF";
+        let defaultDepartmentFontFamily = "楷体";
+        let defaultDepartmentFontSize = "5rem";
+
+
+        var layoutset;
+        var stepsdata;
+        $(document).ready(function () {
+
+            $.getJSON('data/layout.json', function (data) {
+                let layoutset = data;
+                $.getJSON('data/data.json', function (sdata) {
+                    let stepsdata = sdata;
+                    $.each(layoutset, function (i, layoutdata) {
+                        if (layoutdata.id == stepsdata.layout) {
+                            layout = layoutdata;
+                        }
+                    });
+
+                    if (layout != null) {
+                        let overviewlayout = layout.steps.slice(-1)[0];
+                        var overviewhtml = "<div id='overview' class='step' data-x='" + overviewlayout.x + "' data-y='" + overviewlayout.y + "' data-z='" + overviewlayout.z + "' data-rotate-x='" + overviewlayout.rotate_x + "' data-rotate-y='" + overviewlayout.rotate_y + "' data-rotate-z='" + overviewlayout.rotate_z + "' data-scale='" + overviewlayout.scale + "' data-autoplay='" + overviewlayout.autoplay + "' ></div>";
+
+                        if (stepsdata.slides.length > 0) {
+                            $.each(stepsdata.slides, function (i, slidedata) {
+                                if (i < layout.steps.length - 1) {
+                                    let setplayout = layout.steps[i];
+                                    var stephtml = "";
+                                    var steporder = i + 1;
+
+                                    switch (slidedata.type) {
+                                        case "video":
+                                            {
+                                                stephtml += "<div id='视频-" + steporder + "' class='step'"
+                                                    + (setplayout.x == undefined ? "" : (" data-x='" + setplayout.x + "'"))
+                                                    + (setplayout.y == undefined ? "" : (" data-y='" + setplayout.y + "'"))
+                                                    + (setplayout.z == undefined ? "" : (" data-z='" + setplayout.z + "'"))
+                                                    + (setplayout.rotate_x == undefined ? "" : (" data-rotate-x='" + setplayout.rotate_x + "'"))
+                                                    + (setplayout.rotate_y == undefined ? "" : (" data-rotate-y='" + setplayout.rotate_y + "'"))
+                                                    + (setplayout.rotate_z == undefined ? "" : (" data-rotate-z='" + setplayout.rotate_z + "'"))
+                                                    + (setplayout.scale == undefined ? "" : (" data-scale='" + setplayout.scale + "'"))
+                                                    + (setplayout.autoplay == undefined ? "" : (" data-autoplay='" + setplayout.autoplay + "'"))
+                                                    + ">\n";
+                                                stephtml += "<video id='video" + steporder + "' width='1920' height='1080' " + (slidedata.content.muted ? " muted " : " ") + (slidedata.content.autoplay ? " autoplay " : " ") + (slidedata.content.loop ? " loop " : " ") + (slidedata.content.controls ? " controls " : " ") + ">\n";
+                                                stephtml += "<source src='" + slidedata.content.source + "' type='video/mp4'>\n";
+                                                stephtml += "</video>\n";
+                                                if (slidedata.content.title != undefined) {
+                                                    stephtml += "<div style='z-index: 1100;display:flex;display: block;position: fixed !important;"
+                                                        + (slidedata.content.title.text_align == undefined ? ("text-align:center;") : ("text-align:" + slidedata.content.title.text_align + ";"))
+                                                        + (slidedata.content.title.color == undefined ? ("color:" + defaultTitleColor + ";") : ("color:" + slidedata.content.title.color + ";"))
+                                                        + (slidedata.content.title.font_family == undefined ? ("font-family:" + defaultTitleFontFamily + ";") : ("font-family:" + slidedata.content.title.font_family + ";"))
+                                                        + (slidedata.content.title.font_size == undefined ? ("font-size:" + defaultTitleFontSize + ";") : ("font-size:" + slidedata.content.title.font_size + ";"))
+                                                        + (slidedata.content.title.left == undefined ? "" : "left:" + slidedata.content.title.left + ";")
+                                                        + (slidedata.content.title.top == undefined ? "" : "top:" + slidedata.content.title.top + ";")
+                                                        + (slidedata.content.title.right == undefined ? "" : "right:" + slidedata.content.title.right + ";")
+                                                        + (slidedata.content.title.bottom == undefined ? "" : "bottom:" + slidedata.content.title.bottom + ";")
+                                                        + (slidedata.content.title.width == undefined ? "" : "width:" + slidedata.content.title.width + ";")
+                                                        + (slidedata.content.title.height == undefined ? "" : "height:" + slidedata.content.title.height + ";")
+                                                        + (slidedata.content.title.background == undefined ? "" : "background:" + slidedata.content.title.background + ";")
+                                                        + "'>\n";
+                                                    stephtml += "<h2 style='margin:auto;'>" + slidedata.content.title.text + "</h2>\n";
+                                                    stephtml += "</div>\n";
+                                                }
+                                                stephtml += "</div>\n";
+                                                break;
+                                            }
+                                        case "url":
+                                            {
+                                                stephtml += "<div id='网址-" + steporder + "' class='step'"
+                                                + (setplayout.x == undefined ? "" : (" data-x='" + setplayout.x + "'"))
+                                                    + (setplayout.y == undefined ? "" : (" data-y='" + setplayout.y + "'"))
+                                                    + (setplayout.z == undefined ? "" : (" data-z='" + setplayout.z + "'"))
+                                                    + (setplayout.rotate_x == undefined ? "" : (" data-rotate-x='" + setplayout.rotate_x + "'"))
+                                                    + (setplayout.rotate_y == undefined ? "" : (" data-rotate-y='" + setplayout.rotate_y + "'"))
+                                                    + (setplayout.rotate_z == undefined ? "" : (" data-rotate-z='" + setplayout.rotate_z + "'"))
+                                                    + (setplayout.scale == undefined ? "" : (" data-scale='" + setplayout.scale + "'"))
+                                                    + (setplayout.autoplay == undefined ? "" : (" data-autoplay='" + setplayout.autoplay + "'"))
+                                                    + "'>\n";
+                                                stephtml += "<iframe src='" + slidedata.content.url + "' height='100%'' width='100%''></iframe>";
+                                                stephtml += "</div>\n";
+                                                break;
+                                            }
+                                        case "picture":
+                                            {
+                                                stephtml += "<div id='图片-" + steporder + "' class='step'"
+                                                + (setplayout.x == undefined ? "" : (" data-x='" + setplayout.x + "'"))
+                                                    + (setplayout.y == undefined ? "" : (" data-y='" + setplayout.y + "'"))
+                                                    + (setplayout.z == undefined ? "" : (" data-z='" + setplayout.z + "'"))
+                                                    + (setplayout.rotate_x == undefined ? "" : (" data-rotate-x='" + setplayout.rotate_x + "'"))
+                                                    + (setplayout.rotate_y == undefined ? "" : (" data-rotate-y='" + setplayout.rotate_y + "'"))
+                                                    + (setplayout.rotate_z == undefined ? "" : (" data-rotate-z='" + setplayout.rotate_z + "'"))
+                                                    + (setplayout.scale == undefined ? "" : (" data-scale='" + setplayout.scale + "'"))
+                                                    + (setplayout.autoplay == undefined ? "" : (" data-autoplay='" + setplayout.autoplay + "'"))
+                                                    + "'>\n";
+                                                stephtml += "<img src='" + slidedata.content.source + "' style='position: absolute;top: 0;left: 0;width:100%;height:100%;'></img>";
+                                                if (slidedata.content.title != undefined) {
+                                                    stephtml += "<div style='z-index: 1100;padding: 10px;display: block;position: fixed !important;"
+                                                        + (slidedata.content.title.text_align == undefined ? ("text-align:center;") : ("text-align:" + slidedata.content.title.text_align + ";"))
+                                                        + (slidedata.content.title.color == undefined ? ("color:" + defaultTitleColor + ";") : ("color:" + slidedata.content.title.color + ";"))
+                                                        + (slidedata.content.title.font_family == undefined ? ("font-family:" + defaultTitleFontFamily + ";") : ("font-family:" + slidedata.content.title.font_family + ";"))
+                                                        + (slidedata.content.title.font_size == undefined ? ("font-size:" + defaultTitleFontSize + ";") : ("font-size:" + slidedata.content.title.font_size + ";"))
+                                                        + (slidedata.content.title.left == undefined ? "" : "left:" + slidedata.content.title.left + ";")
+                                                        + (slidedata.content.title.top == undefined ? "" : "top:" + slidedata.content.title.top + ";")
+                                                        + (slidedata.content.title.right == undefined ? "" : "right:" + slidedata.content.title.right + ";")
+                                                        + (slidedata.content.title.bottom == undefined ? "" : "bottom:" + slidedata.content.title.bottom + ";")
+                                                        + (slidedata.content.title.width == undefined ? "" : "width:" + slidedata.content.title.width + ";")
+                                                        + (slidedata.content.title.height == undefined ? "" : "height:" + slidedata.content.title.height + ";")
+                                                        + (slidedata.content.title.background == undefined ? "" : "background:" + slidedata.content.title.background + ";")
+                                                        + "'>\n";
+                                                    stephtml += "<h2 style='margin:auto;'>" + slidedata.content.title.text + "</h2>\n";
+                                                    stephtml += "</div>\n";
+                                                }
+                                                stephtml += "</div>\n";
+                                                break;
+                                            }
+                                        case "text":
+                                            {
+                                                stephtml += "<div id='文本-" + steporder + "' class='step'"
+                                                + (setplayout.x == undefined ? "" : (" data-x='" + setplayout.x + "'"))
+                                                    + (setplayout.y == undefined ? "" : (" data-y='" + setplayout.y + "'"))
+                                                    + (setplayout.z == undefined ? "" : (" data-z='" + setplayout.z + "'"))
+                                                    + (setplayout.rotate_x == undefined ? "" : (" data-rotate-x='" + setplayout.rotate_x + "'"))
+                                                    + (setplayout.rotate_y == undefined ? "" : (" data-rotate-y='" + setplayout.rotate_y + "'"))
+                                                    + (setplayout.rotate_z == undefined ? "" : (" data-rotate-z='" + setplayout.rotate_z + "'"))
+                                                    + (setplayout.scale == undefined ? "" : (" data-scale='" + setplayout.scale + "'"))
+                                                    + (setplayout.autoplay == undefined ? "" : (" data-autoplay='" + setplayout.autoplay + "'"))
+                                                    + "'>\n";
+                                                if (slidedata.content.background == undefined || slidedata.content.background == "") {
+                                                    slidedata.content.background = "images/4K金色粒子墙循环动态颁奖背景素材.mp4"
+                                                }
+                                                if (slidedata.content.background.endsWith(".mp4")) {
+                                                    stephtml += "<video  width='1920' height='1080'  muted autoplay loop >\n";
+                                                    stephtml += "\t<source src='" + slidedata.content.background + "' type='video/mp4'>\n";
+                                                    stephtml += "</video>\n";
+                                                }
+                                                else {
+                                                    stephtml += "<img src='" + slidedata.content.background + "' style='position: absolute;top: 0;left: 0;width:100%;height:100%;'></img>";
+                                                }
+                                                if (slidedata.content.title != undefined) {
+                                                    stephtml += "<div style='z-index: 1100;padding: 10px;display: block;position: fixed !important;"
+                                                        + (slidedata.content.title.text_align == undefined ? ("text-align:center;") : ("text-align:" + slidedata.content.title.text_align + ";"))
+                                                        + (slidedata.content.title.color == undefined ? ("color:" + defaultTitleColor + ";") : ("color:" + slidedata.content.title.color + ";"))
+                                                        + (slidedata.content.title.font_family == undefined ? ("font-family:" + defaultTitleFontFamily + ";") : ("font-family:" + slidedata.content.title.font_family + ";"))
+                                                        + (slidedata.content.title.font_size == undefined ? ("font-size:" + defaultTitleFontSize + ";") : ("font-size:" + slidedata.content.title.font_size + ";"))
+                                                        + (slidedata.content.title.left == undefined ? "" : "left:" + slidedata.content.title.left + ";")
+                                                        + (slidedata.content.title.top == undefined ? "" : "top:" + slidedata.content.title.top + ";")
+                                                        + (slidedata.content.title.right == undefined ? "" : "right:" + slidedata.content.title.right + ";")
+                                                        + (slidedata.content.title.bottom == undefined ? "" : "bottom:" + slidedata.content.title.bottom + ";")
+                                                        + (slidedata.content.title.width == undefined ? "" : "width:" + slidedata.content.title.width + ";")
+                                                        + (slidedata.content.title.height == undefined ? "" : "height:" + slidedata.content.title.height + ";")
+                                                        + (slidedata.content.title.background == undefined ? "" : "background:" + slidedata.content.title.background + ";")
+                                                        + "'>\n";
+                                                    stephtml += "<h2 style='margin:auto;'>" + slidedata.content.title.text + "</h2>\n";
+                                                    stephtml += "</div>\n";
+                                                }
+                                                if (slidedata.content.substance != undefined) {
+                                                    stephtml += "<div style='z-index: 1100;padding: 10px;display: block;position: fixed !important;"
+                                                        + (slidedata.content.substance.text_align == undefined ? ("text-align:left;") : ("text-align:" + slidedata.content.substance.text_align + ";"))
+                                                        + (slidedata.content.substance.color == undefined ? ("color:" + defaultSubstanceColor + ";") : ("color:" + slidedata.content.substance.color + ";"))
+                                                        + (slidedata.content.substance.font_family == undefined ? ("font-family:" + defaultSubstanceFontFamily + ";") : ("font-family:" + slidedata.content.substance.font_family + ";"))
+                                                        + (slidedata.content.substance.font_size == undefined ? ("font-size:" + defaultSubstanceFontSize + ";") : ("font-size:" + slidedata.content.substance.font_size + ";"))
+                                                        + (slidedata.content.substance.left == undefined ? "" : "left:" + slidedata.content.substance.left + ";")
+                                                        + (slidedata.content.substance.top == undefined ? "" : "top:" + slidedata.content.substance.top + ";")
+                                                        + (slidedata.content.substance.right == undefined ? "" : "right:" + slidedata.content.substance.right + ";")
+                                                        + (slidedata.content.substance.bottom == undefined ? "" : "bottom:" + slidedata.content.substance.bottom + ";")
+                                                        + (slidedata.content.substance.width == undefined ? "" : "width:" + slidedata.content.substance.width + ";")
+                                                        + (slidedata.content.substance.height == undefined ? "" : "height:" + slidedata.content.substance.height + ";")
+                                                        + (slidedata.content.substance.background == undefined ? "" : "background:" + slidedata.content.substance.background + ";")
+                                                        + "'>\n";
+
+                                                    stephtml += "<p>" + slidedata.content.substance.text + "</p>\n";
+                                                    stephtml += "</div>\n";
+                                                }
+                                                if (slidedata.content.department != undefined) {
+                                                    stephtml += "<div style='z-index: 1100;padding: 10px;display: block;position: fixed !important;"
+                                                        + (slidedata.content.department.text_align == undefined ? ("text-align:right;") : ("text-align:" + slidedata.content.department.text_align + ";"))
+                                                        + (slidedata.content.department.color == undefined ? ("color:" + defaultDepartmentColor + ";") : ("color:" + slidedata.content.department.color + ";"))
+                                                        + (slidedata.content.department.font_family == undefined ? ("font-family:" + defaultDepartmentFontFamily + ";") : ("font-family:" + slidedata.content.department.font_family + ";"))
+                                                        + (slidedata.content.department.font_size == undefined ? ("font-size:" + defaultDepartmentFontSize + ";") : ("font-size:" + slidedata.content.department.font_size + ";"))
+                                                        + (slidedata.content.department.left == undefined ? "" : "left:" + slidedata.content.department.left + ";")
+                                                        + (slidedata.content.department.top == undefined ? "" : "top:" + slidedata.content.department.top + ";")
+                                                        + (slidedata.content.department.right == undefined ? "" : "right:" + slidedata.content.department.right + ";")
+                                                        + (slidedata.content.department.bottom == undefined ? "" : "bottom:" + slidedata.content.department.bottom + ";")
+                                                        + (slidedata.content.department.width == undefined ? "" : "width:" + slidedata.content.department.width + ";")
+                                                        + (slidedata.content.department.height == undefined ? "" : "height:" + slidedata.content.department.height + ";")
+                                                        + (slidedata.content.department.background == undefined ? "" : "background:" + slidedata.content.department.background + ";")
+                                                        + "'>\n";
+
+                                                    stephtml += "<p>" + slidedata.content.department.text + "</p>\n";
+                                                    stephtml += "</div>\n";
+                                                }
+
+
+                                                stephtml += "</div>\n";
+
+                                                break;
+                                            }
+                                        case "pictureset":
+                                            {
+
+                                                break;
+                                            }
+                                    }
+                                    $('#impress').append(stephtml);
+                                }
+                            });
+                            $('#impress').append(overviewhtml);
+                        }
+
+
+                        api = impress();
+                        api.init();
+
+                        var videoList = $(".step[id*=视频-]");
+                        $.each(videoList, function (i, videoStep) {
+                            let video = videoStep.children[0];
+                            videoStep.addEventListener("impress:stepenter", function () {
+                                video.currentTime = 0; video.play();
+                            }, false);
+                            //videoStep.addEventListener("impress:stepleave", function () { video.pause(); }, false);
+                            video.addEventListener("canplay", function () {
+                                videoStep.dataset.autoplay = this.duration;
+                                console.log(videoStep.id + " " + videoStep.dataset.autoplay);
+                            });
+                        });
+
+
+
+
+
+                        if ("ontouchstart" in document.documentElement) {
+                            document.querySelector(".hint").innerHTML = "<p>向左或向右拖动屏幕来移动</p>";
+                        }
+
+                    }
+
+                });
+            });
+
+        });
+    </script>
+
+
+    <div class="hint">
+        <p>使用空格或者方向键来移动</p>
+    </div>
+
+
+
+</body>
+
+</html>

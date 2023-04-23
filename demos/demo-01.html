@@ -19,30 +19,36 @@
   <!-- <link rel="stylesheet" href="../assets/impress.js/css/impress-demo.css"> -->
 </head>
 <body class="bg-dark">
-  <div id="impress" style=""
+  <div id="impress"
     data-transition-duration="1000"
     data-width="1920"
     data-height="1096"
     data-max-scale="3"
     data-min-scale="0"
     data-perspective="1000"
-    data-autoplay="1000"
+    data-autoplay="7000"
     >
+
     <div id="overview" class="step" data-x="0" data-y="0" data-z="0" data-scale="10">
     </div>
+
     <div id="my-first-slide" class="step bg-info" data-x="-1920" data-y="-500" data-rotate-y="-15" data-rotate-x="0">
       <h1 class="text-white">My first slide</h1>
     </div>
+
     <div id="hello-world" class="step bg-warning" data-x="0" data-y="-500" data-rotate-y="0">
       <h1>Hello, world!</h1>
     </div>
+
     <div id="map" class="step bg-success" data-x="1920" data-y="-500" data-rotate-y="15">
     </div>
+
     <div id="video" class="step" data-x="3840" data-y="-500" data-rotate-y="0">
       <video controls width="1920" autoplay="autoplay" loop="loop" muted="muted">
         <source src="http://127.0.0.1/dist/flower.webm" type="video/webm">
       </video>
     </div>
+
   </div>
   <div id="impress-toolbar"></div>
   <script>
