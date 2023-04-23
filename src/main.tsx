@@ -9,7 +9,7 @@ page.innerHTML = '';
 
 const root = createRoot(page);
 root.render(
-    <StrictMode>
+    // <StrictMode>
       <App message='Hello, World!' />
-    </StrictMode>
+    // </StrictMode>
 );
